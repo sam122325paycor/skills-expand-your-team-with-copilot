@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
             href="https://www.facebook.com/sharer/sharer.php?u=${encodedActivityUrl}"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Share ${name} on Facebook"
+            aria-label="Share on Facebook"
           >
             Facebook
           </a>
@@ -499,7 +499,7 @@ document.addEventListener("DOMContentLoaded", () => {
             href="https://twitter.com/intent/tweet?text=${shareText}&url=${encodedActivityUrl}"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Share ${name} on X"
+            aria-label="Share on X"
           >
             X
           </a>
@@ -508,7 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
             href="https://wa.me/?text=${shareText}%20${encodedActivityUrl}"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Share ${name} on WhatsApp"
+            aria-label="Share on WhatsApp"
           >
             WhatsApp
           </a>
