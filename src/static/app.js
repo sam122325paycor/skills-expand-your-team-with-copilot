@@ -25,8 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
   const themeToggleButton = document.getElementById("theme-toggle");
-  const themeToggleLabel = themeToggleButton.querySelector(".theme-toggle-label");
-  const themeToggleIcon = themeToggleButton.querySelector(".theme-icon");
+  const themeToggleLabel = themeToggleButton
+    ? themeToggleButton.querySelector(".theme-toggle-label")
+    : null;
+  const themeToggleIcon = themeToggleButton
+    ? themeToggleButton.querySelector(".theme-icon")
+    : null;
 
   // Activity categories with corresponding colors
   const activityTypes = {
@@ -50,8 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyTheme(theme) {
     const isDarkMode = theme === "dark";
     document.body.classList.toggle("dark-mode", isDarkMode);
-    themeToggleLabel.textContent = isDarkMode ? "Light mode" : "Dark mode";
-    themeToggleIcon.textContent = isDarkMode ? "☀️" : "🌙";
+    if (themeToggleLabel && themeToggleIcon) {
+      themeToggleLabel.textContent = isDarkMode
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+      themeToggleIcon.textContent = isDarkMode ? "☀️" : "🌙";
+    }
+    if (themeToggleButton) {
+      themeToggleButton.setAttribute(
+        "aria-label",
+        isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+      );
+    }
   }
 
   function initializeTheme() {
@@ -261,7 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loginButton.addEventListener("click", openLoginModal);
   logoutButton.addEventListener("click", logout);
   closeLoginModal.addEventListener("click", closeLoginModalHandler);
-  themeToggleButton.addEventListener("click", toggleTheme);
+  if (themeToggleButton) {
+    themeToggleButton.addEventListener("click", toggleTheme);
+  }
 
   // Close login modal when clicking outside
   window.addEventListener("click", (event) => {
