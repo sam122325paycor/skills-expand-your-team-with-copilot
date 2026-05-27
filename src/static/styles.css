@@ -50,6 +50,23 @@ body {
   font-size: 0.9rem;
 }
 
+body.dark-mode {
+  --primary: #283593;
+  --primary-light: #5f5fc4;
+  --primary-dark: #001064;
+  --background: #121212;
+  --surface: #1f1f1f;
+  --text-primary: #f5f5f5;
+  --text-secondary: #c7c7c7;
+  --border: #3a3a3a;
+  --border-light: #2d2d2d;
+  --border-focus: #616161;
+  --success-light: #1f3f23;
+  --warning-light: #4a3a18;
+  --error-light: #4a1f1f;
+  --info-light: #1f3a40;
+}
+
 header {
   text-align: center;
   padding: 12px 0;
@@ -669,6 +686,10 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
 }
 
 #user-status {
@@ -703,6 +724,10 @@ footer {
 }
 
 .user-icon {
+  font-size: 1rem;
+}
+
+.theme-icon {
   font-size: 1rem;
 }
 
