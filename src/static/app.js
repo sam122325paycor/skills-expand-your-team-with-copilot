@@ -453,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
       } else if (details.difficulty_level) {
-        // Empty difficulty means "All" option: show only activities with no specified level.
+        // Empty difficulty filter shows only activities without a specified level.
         return;
       }
 
