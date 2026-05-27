@@ -472,6 +472,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function createSocialShareHtml(name, details) {
+    const activityUrl = new URL(window.location.href);
+    activityUrl.searchParams.set("activity", name);
+
+    const shareText = encodeURIComponent(
+      `Check out ${name} at Mergington High School Activities! ${details.description}`
+    );
+    const encodedActivityUrl = encodeURIComponent(activityUrl.toString());
+
+    return `
+      <div class="social-share">
+        <span class="social-share-label">Share:</span>
+        <div class="social-share-buttons">
+          <a
+            class="share-button share-facebook"
+            href="https://www.facebook.com/sharer/sharer.php?u=${encodedActivityUrl}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on Facebook"
+          >
+            Facebook
+          </a>
+          <a
+            class="share-button share-x"
+            href="https://twitter.com/intent/tweet?text=${shareText}&url=${encodedActivityUrl}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on X"
+          >
+            X
+          </a>
+          <a
+            class="share-button share-whatsapp"
+            href="https://wa.me/?text=${shareText}%20${encodedActivityUrl}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Share on WhatsApp"
+          >
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -519,6 +564,8 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
+    const socialShareHtml = createSocialShareHtml(name, details);
+
     activityCard.innerHTML = `
       ${tagHtml}
       <h4>${name}</h4>
@@ -528,6 +575,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="tooltip-text">Regular meetings at this time throughout the semester</span>
       </p>
       ${capacityIndicator}
+      ${socialShareHtml}
       <div class="participants-list">
         <h5>Current Participants:</h5>
         <ul>
